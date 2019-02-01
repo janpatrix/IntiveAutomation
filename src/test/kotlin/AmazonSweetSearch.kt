@@ -1,5 +1,3 @@
-package com.patrickgross.stepDefinitions
-
 import com.patrickgross.pageobjects.CartPage
 import com.patrickgross.pageobjects.LandingPage
 import com.patrickgross.pageobjects.ResultsPage
