@@ -5,6 +5,9 @@ import org.openqa.selenium.WebDriver
 import org.openqa.selenium.chrome.ChromeDriver
 import java.net.URI
 import java.util.concurrent.TimeUnit
+import org.openqa.selenium.firefox.FirefoxDriver
+
+
 
 abstract class DriverSetup{
 
@@ -13,11 +16,20 @@ abstract class DriverSetup{
 
     fun driverSetup(url: String) {
 
-        System.setProperty(PageProperties.getProperties("nameDriver"),
-            PageProperties.getProperties("pathDriver") + PageProperties.getProperties("exeDriver"))
-        driver = ChromeDriver()
+        var nameDriver: String = PageProperties.getProperties("nameDriver")
+        var pathDriver: String = PageProperties.getProperties("pathDriver")
+        var exeDriver: String = PageProperties.getProperties("exeDriver")
+
+        System.setProperty(nameDriver, pathDriver + exeDriver)
+
+        when (PageProperties.getProperties("nameDriver")) {
+            "webdriver.firefox.driver" -> driver = FirefoxDriver()
+            "webdriver.chrome.driver" -> driver = ChromeDriver()
+            else -> throw RuntimeException("Unsupported webdriver: $driver")
+        }
+
         driver?.manage()?.timeouts()?.implicitlyWait(10, TimeUnit.SECONDS)
-        val maximize = driver?.manage()?.window()?.maximize()
+        driver?.manage()?.window()?.maximize()
         driver.get(URI(url).toString())
     }
 
