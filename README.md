@@ -6,7 +6,7 @@ Please configure your webdriver in config.properties
 
 Adjust executable name and path
 
-To execute the tests just run RunCukesTest IDE
+To execute the tests just run RunCukesTest in e.g. IntelliJ
 
 or run 
 
