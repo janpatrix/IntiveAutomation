@@ -1,7 +1,6 @@
 package com.patrickgross.stepDefinitions
 
 import com.patrickgross.pageobjects.CartPage
-import com.patrickgross.pageobjects.DetailsPage
 import com.patrickgross.pageobjects.LandingPage
 import com.patrickgross.pageobjects.ResultsPage
 import com.patrickgross.testUtils.DriverSetup
@@ -9,19 +8,12 @@ import cucumber.api.Scenario
 import cucumber.api.java8.En
 import org.junit.Assert
 import kotlin.test.assertEquals
-import org.openqa.selenium.By
-import org.openqa.selenium.support.ui.ExpectedConditions
-import org.openqa.selenium.support.ui.WebDriverWait
-import org.openqa.selenium.WebElement
-import gherkin.deps.com.google.gson.annotations.Until
-import java.sql.Time
 
 
 class AmazonSweetSearch: DriverSetup(), En {
 
     private var landingPage: LandingPage? = null
     private var resultsPage: ResultsPage? = null
-    private var detailsPage: DetailsPage? = null
     private var cartPage: CartPage? = null
 
     init {
@@ -31,7 +23,6 @@ class AmazonSweetSearch: DriverSetup(), En {
             driverSetup(url)
             landingPage = LandingPage(driver)
             resultsPage = ResultsPage(driver)
-            detailsPage = DetailsPage(driver)
             cartPage = CartPage(driver)
 
             assertEquals(driver.currentUrl, "https://www.amazon.com/")
@@ -52,16 +43,9 @@ class AmazonSweetSearch: DriverSetup(), En {
         Then("^I pick the first item in the list$") {
 
             Thread.sleep(1000)
-            val cheapestItem : String? = resultsPage?.selectItemInList()
-            val productTitle : String? = detailsPage?.returnProductTitle()
-            Assert.assertEquals(cheapestItem, productTitle)
-        }
-
-        Then("^I add it to the cart$") {
-
-            detailsPage?.addToCart()
+            resultsPage?.selectItemInList()
+            //detailsPage?.addToCart()
             Assert.assertTrue(cartPage!!.checkIfAddedToCart())
-
         }
 
         After { scenario: Scenario? ->
