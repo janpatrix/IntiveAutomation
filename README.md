@@ -6,7 +6,13 @@ Please configure your webdriver in config.properties
 
 Adjust executable name and path
 
-To execute the tests just run RunCucumberTests
+To execute the tests just run RunCukesTest IDE
 
-Cucumber feature file is located in test/resources
+or run 
+
+mvn clean install
+mvn test
+
+
+
 
