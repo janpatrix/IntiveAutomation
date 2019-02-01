@@ -48,6 +48,12 @@ class AmazonSweetSearch: DriverSetup(), En {
             Assert.assertTrue(cartPage!!.checkIfAddedToCart())
         }
 
+        Then("^I checkout") {
+
+            cartPage?.checkout()
+            Assert.assertTrue(driver?.currentUrl.contains("signin"))
+        }
+
         After { scenario: Scenario? ->
 
             driverClose()

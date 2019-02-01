@@ -11,6 +11,9 @@ class CartPage(private val driver : WebDriver) {
     @FindBy(id = "huc-v2-order-row-messages")
     private val addedToCart: WebElement? = null
 
+    @FindBy(className = "hlb-checkout-button")
+    private val checkoutButton: WebElement? = null
+
     init {
 
         PageFactory.initElements(driver, this)
@@ -19,5 +22,10 @@ class CartPage(private val driver : WebDriver) {
     fun checkIfAddedToCart() : Boolean{
 
         return addedToCart?.text.equals("Added to Cart")
+    }
+
+    fun checkout() {
+
+        checkoutButton?.click()
     }
 }

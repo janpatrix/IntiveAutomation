@@ -12,3 +12,4 @@
       Then I search for Twix
       Then I sort by "Price: Low to High"
       And I pick the first item in the list
+      And I checkout
