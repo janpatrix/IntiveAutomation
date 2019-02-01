@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory
 
 class LandingPage(private val driver : WebDriver) {
 
-    @FindBy(id = "twoabsearchtextbox")
+    @FindBy(id = "twotabsearchtextbox")
     private val searchBox: WebElement? = null
 
     init {

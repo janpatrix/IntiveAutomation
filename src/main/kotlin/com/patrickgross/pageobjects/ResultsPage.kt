@@ -28,9 +28,11 @@ class ResultsPage(private val driver: WebDriver) {
         dropBox.selectByVisibleText(sortBy)
     }
 
-    fun selectItemInList(index: Int) {
+    fun selectItemInList() : String {
 
-        val item: WebElement? = driver.findElement(By.id("result_" + index))
-        item?.click()
+        val item: WebElement? = driver.findElement(By.className("s-access-title"))
+        val itemText : String = item!!.text
+        item!!.click()
+        return itemText
     }
 }

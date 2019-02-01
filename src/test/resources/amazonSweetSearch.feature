@@ -5,4 +5,5 @@
       Given I open https://www.amazon.com
       Then I search for Snickers
       Then I sort by "Price: Low to High"
-      And I pick item number 1 in the list
+      And I pick the first item in the list
+      And I add it to the cart
