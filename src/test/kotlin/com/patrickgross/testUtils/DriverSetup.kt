@@ -16,14 +16,16 @@ abstract class DriverSetup{
 
     fun driverSetup(url: String) {
 
-        var nameDriver: String = PageProperties.getProperties("nameDriver")
-        var pathDriver: String = PageProperties.getProperties("pathDriver")
-        var exeDriver: String = PageProperties.getProperties("exeDriver")
+        var browserName: String = System.getProperty("browser")
+
+        var nameDriver: String = PageProperties.getProperties(browserName + "NameDriver")
+        var pathDriver: String = PageProperties.getProperties(browserName + "PathDriver")
+        var exeDriver: String = PageProperties.getProperties(browserName + "ExeDriver")
 
         System.setProperty(nameDriver, pathDriver + exeDriver)
 
-        when (PageProperties.getProperties("nameDriver")) {
-            "webdriver.firefox.driver" -> driver = FirefoxDriver()
+        when (PageProperties.getProperties(browserName + "NameDriver")) {
+            "webdriver.gecko.driver" -> driver = FirefoxDriver()
             "webdriver.chrome.driver" -> driver = ChromeDriver()
             else -> throw RuntimeException("Unsupported webdriver: $driver")
         }
