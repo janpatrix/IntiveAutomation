@@ -16,7 +16,10 @@ abstract class DriverSetup{
 
     fun driverSetup(url: String) {
 
-        var browserName: String = System.getProperty("browser")
+        var browserName: String? = System.getProperty("browser")
+        if (browserName.isNullOrEmpty()){
+            browserName = "chrome"
+        }
 
         var nameDriver: String = PageProperties.getProperties(browserName + "NameDriver")
         var pathDriver: String = PageProperties.getProperties(browserName + "PathDriver")
