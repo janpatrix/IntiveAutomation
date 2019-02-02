@@ -1,7 +1,7 @@
 @amazon
   Feature: Amazon Search
 
-    Scenario: Open Amazon.com, search for Snickers, sort them by cheapest price and add to cart
+    Scenario: Open Amazon.com, search for sweets, sort them by cheapest price and add to cart
       Given I open https://www.amazon.com
       Then I search for Snickers
       Then I sort by "Price: Low to High"
